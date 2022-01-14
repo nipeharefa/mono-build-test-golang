@@ -1,0 +1,25 @@
+
+# Reference: https://github.com/googleapis/google-cloud-go/blob/4b41a6f3b0e014221ff06595fd24fd7efb7d765a/.github/workflows/release-submodule.yaml
+on: push
+
+name: release-please-submodule
+jobs:
+  # This logic looks at commits that have occurred since GitHub's magic
+  # latestRelease:
+  # https://developer.github.com/v3/repos/releases/#get-the-latest-release
+  # TODO: it would be better if we retrieved a list of all prior releases,
+  # and found the oldest release within the SUB_MODULES array. We need this
+  # logic for other libraries as well, and would like to pull this logic
+  # into its own action.
+  changeFinder:
+    runs-on: ubuntu-latest
+    outputs:
+      submodules: ${{ steps.interrogate.outputs.submodules }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '^1.17'
+      - id: interrogate
+        run: go run internal/main.go
