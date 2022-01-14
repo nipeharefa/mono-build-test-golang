@@ -22,4 +22,4 @@ jobs:
         with:
           go-version: '^1.17'
       - id: interrogate
-        run: go run ./internal
+        run: go run internal/main.go
