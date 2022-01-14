@@ -11,6 +11,7 @@ import (
 	"strings"
 )
 
+// Ref: https://github.com/googleapis/google-cloud-go/blob/4b41a6f3b0e014221ff06595fd24fd7efb7d765a/internal/actions/cmd/changefinder/main.go#L142
 func main() {
 	rootDir, err := os.Getwd()
 	if err != nil {
