@@ -24,4 +24,4 @@ jobs:
       - id: ls
         run: ls -al
       - id: interrogate
-        run: go run internal/main.go
+        run: go run ./internal/main.go
