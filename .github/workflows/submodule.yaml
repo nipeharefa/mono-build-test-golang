@@ -22,6 +22,8 @@ jobs:
         with:
           go-version: '^1.17'
       - id: ls
-        run: ls -al ./internal
+        run: |
+          ls -l
+          git fetch origin main
       - id: interrogate
         run: go run ./internal/main.go
